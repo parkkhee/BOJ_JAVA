@@ -1,0 +1,47 @@
+package test;
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+class Main {
+
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+    static int n,m;
+    static int[] sk;
+    static int[] num_card;
+    static int[] how_num_card;
+
+
+    public static void main(String[] args) throws IOException {
+
+        n = Integer.parseInt(br.readLine());
+        sk = new int[n];
+
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < n; i++) {
+            sk[i] = Integer.parseInt(st.nextToken());
+        }
+
+        m = Integer.parseInt(br.readLine());
+        num_card = new int[m];
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < m; i++) {
+            num_card[i] = Integer.parseInt(st.nextToken());
+        }
+        how_num_card = new int[m];
+        for (int i = 0; i < m; i++) {
+            int nn = num_card[i];
+            int count = (int) Arrays.stream(sk).filter(n -> n == nn).count();
+            how_num_card[i] = count;
+        }
+
+        Arrays.stream(how_num_card).forEach(i -> System.out.printf(i+" "));
+    }
+}
+
+
